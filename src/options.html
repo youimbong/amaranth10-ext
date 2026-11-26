@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>아마란스10 알림 설정</title>
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; max-width: 640px; margin: 32px auto; padding: 0 16px; color: #222; background: #fff; }
+  h1 { font-size: 20px; }
+  label { display: block; margin: 16px 0 4px; font-weight: 600; }
+  input[type=url] { width: 100%; box-sizing: border-box; padding: 6px; }
+  input[type=number] { width: 80px; padding: 6px; }
+  .hint { color: #666; font-size: 12px; }
+  .buttons { margin-top: 20px; display: flex; gap: 8px; }
+  #message { margin-top: 12px; min-height: 1.5em; }
+  #status { margin-top: 24px; padding: 12px; background: #f4f4f4; border-radius: 6px; white-space: pre-line; }
+</style>
+</head>
+<body>
+<h1>아마란스10 알림 설정</h1>
+<p id="setup" hidden>알림을 사용하려면 먼저 아마란스10 접속 주소를 입력하고 저장해 주세요.</p>
+
+<label for="siteOrigin">아마란스10 접속 주소</label>
+<input id="siteOrigin" type="url" placeholder="https://groupware.example.com" required>
+<div class="hint">한 번에 한 사이트만 연결합니다. 저장 시 해당 사이트 접근 권한을 요청합니다. 주소를 바꾸면 이전 알림·사용자 정보를 초기화합니다.</div>
+
+<label for="webhookUrl">Teams 웹후크 URL</label>
+<input id="webhookUrl" type="url" placeholder="비워 두면 Teams 전달을 하지 않습니다">
+<div class="hint">Teams 워크플로(Workflows) 웹후크 또는 Incoming Webhook 주소. 저장할 때 해당 주소 접근 권한을 요청합니다.</div>
+
+<label for="intervalMin">확인 주기(분)</label>
+<input id="intervalMin" type="number" min="1" step="1" value="1">
+
+<div class="buttons">
+  <button id="save">저장</button>
+  <button id="test">테스트 알림</button>
+</div>
+<div id="message"></div>
+
+<div id="status">상태를 불러오는 중…</div>
+
+<script type="module" src="options.js"></script>
+</body>
+</html>

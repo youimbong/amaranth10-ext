@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>아마란스10 미리보기</title>
+<style>
+  html, body { height: 100%; }
+  body { margin: 0; display: flex; flex-direction: column; font: 13px/1.5 system-ui, sans-serif; color: #222; background: #fff; }
+  #info { padding: 12px 16px; border-bottom: 1px solid #ddd; max-height: 45vh; overflow-y: auto; }
+  h1 { font-size: 17px; margin: 0 0 8px; }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; }
+  dt { color: #888; }
+  dd { margin: 0; word-break: break-word; }
+  table { border-collapse: collapse; margin-top: 8px; }
+  th, td { border: 1px solid #ddd; padding: 2px 8px; text-align: left; }
+  th { background: #f6f6f6; font-weight: 600; }
+  .note { color: #b06000; font-size: 12px; margin-top: 6px; }
+  #toolbar { padding: 6px 16px; border-bottom: 1px solid #eee; font-size: 12px; }
+  iframe { flex: 1; width: 100%; border: 0; }
+</style>
+</head>
+<body>
+<div id="info">불러오는 중…</div>
+<div id="toolbar" hidden><label><input id="remoteImages" type="checkbox"> 외부 이미지 표시</label></div>
+<!-- 본문은 외부 HTML: allow-scripts·allow-same-origin 없이 격리한다. 링크만 새 탭으로 열 수 있게 한다. -->
+<iframe id="bodyFrame" sandbox="allow-popups allow-popups-to-escape-sandbox" hidden></iframe>
+<script type="module" src="preview.js"></script>
+</body>
+</html>

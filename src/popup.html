@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>아마란스10 알림</title>
+<style>
+  body { display: flex; flex-direction: column; width: 400px; max-height: 600px; margin: 0; font: 13px/1.45 system-ui, sans-serif; color: #222; background: #fff; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-bottom: 1px solid #ddd; }
+  h1 { font-size: 14px; margin: 0; }
+  #options { border: 0; background: none; font-size: 16px; cursor: pointer; color: #666; }
+  #siteActions { display: flex; gap: 8px; padding: 8px 12px; border-bottom: 1px solid #ddd; }
+  #siteActions[hidden] { display: none; }
+  #message { padding: 16px 12px; color: #444; }
+  #message button { display: block; margin-top: 10px; }
+  #tabs { display: flex; border-bottom: 1px solid #ddd; }
+  #tabs button { flex: 1; padding: 8px; border: 0; border-bottom: 2px solid transparent; background: none; font: inherit; color: #666; cursor: pointer; }
+  #tabs button[aria-pressed="true"] { border-bottom-color: #d93025; color: #222; font-weight: 600; }
+  #scroll { min-height: 0; overflow-y: auto; }
+  #search { padding: 8px 12px; border-bottom: 1px solid #ddd; }
+  #query { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #bbb; border-radius: 4px; font: inherit; }
+  #query:focus { outline: 2px solid #1a73e8; outline-offset: -1px; border-color: transparent; }
+  #searchStatus { margin-top: 4px; font-size: 12px; color: #666; }
+  #searchStatus:empty { margin: 0; }
+  body.people #searchStatus { min-height: 17px; margin-top: 4px; }
+  body.people #scroll { height: 380px; }
+  body.people #message:not([hidden]) + #scroll { display: none; }
+  body.people #message { box-sizing: border-box; height: 380px; overflow-y: auto; }
+  .person { padding: 8px 12px; }
+  .name { font-weight: 600; }
+  .affiliation, .work { font-size: 12px; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .contacts { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .contacts button { max-width: 100%; padding: 2px 8px; border: 1px solid #ddd; border-radius: 4px; background: #fafafa; font: inherit; font-size: 12px; color: #222; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+  .contacts button:hover { background: #f0f0f0; }
+  .contacts button.copied { border-color: #188038; color: #188038; }
+  .contacts .kind { color: #888; margin-right: 4px; }
+  #more { width: 100%; padding: 10px; border: 0; background: none; font: inherit; color: #444; cursor: pointer; }
+  #more:hover { background: #f6f6f6; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { border-bottom: 1px solid #eee; }
+  .head { display: flex; gap: 8px; width: 100%; padding: 8px 12px; border: 0; background: none; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+  .head:hover { background: #f6f6f6; }
+  .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .time { color: #888; white-space: nowrap; font-size: 12px; }
+  li.unread .title { font-weight: 600; }
+  li.unread .title::before { content: '●'; color: #d93025; font-size: 9px; margin-right: 6px; vertical-align: 2px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>아마란스10 알림</h1>
+  <button id="options" title="설정">⚙</button>
+</header>
+<div id="siteActions" hidden>
+  <button id="openErp">아마란스10 바로가기</button>
+  <button id="refreshErp" title="설정한 아마란스10 탭 새로고침">새로고침</button>
+</div>
+<form id="search">
+  <input id="query" type="search" placeholder="임직원 검색: 이름, 부서, 전화번호, 이메일" aria-label="임직원 검색" autocomplete="off" spellcheck="false" maxlength="50" autofocus>
+  <div id="searchStatus" role="status"></div>
+</form>
+<div id="tabs">
+  <button data-tab="unread" aria-pressed="true">안읽음</button>
+  <button data-tab="all" aria-pressed="false">전체</button>
+</div>
+<div id="message">불러오는 중…</div>
+<div id="scroll">
+  <ul id="list" hidden></ul>
+  <button id="more" hidden>더 보기</button>
+</div>
+<script type="module" src="popup.js"></script>
+</body>
+</html>

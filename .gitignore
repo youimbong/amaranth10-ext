@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+*.zip
+*.crx
+*.pem
+.playwright-mcp/
+test-e2e/.tmp/
+docs/screens/

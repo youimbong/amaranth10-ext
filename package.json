@@ -1,0 +1,12 @@
+{
+  "name": "amaranth10-notifier",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:e2e": "node test-e2e/run.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.1"
+  }
+}
